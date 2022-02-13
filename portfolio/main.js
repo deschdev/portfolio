@@ -15,7 +15,7 @@ camera.position.setZ(30);
 renderer.render( scene, camera);
 
 const shape = new THREE.TorusGeometry( 10, 3, 16, 100);
-const matter = new THREE.MeshStandardMaterial( { color: 0xDAA520 } );
+const matter = new THREE.MeshStandardMaterial( { color: 0x1261A0 } );
 const torus = new THREE.Mesh( shape, matter );
 
 scene.add(torus);
@@ -28,8 +28,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+scene.add(lightHelper,);
 
 const controls = new OrbitControls( camera, renderer.domElement );
 
@@ -42,7 +41,7 @@ function addingStars() {
   scene.add(stars);
 }
 
-Array(600).fill().forEach(addingStars);
+Array(300).fill().forEach(addingStars);
 
 const bgroundTexture = new THREE.TextureLoader().load('./img/redspace.jpg');
 scene.background = bgroundTexture;
