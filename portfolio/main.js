@@ -21,7 +21,7 @@ const torus = new THREE.Mesh( shape, matter );
 scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(20,20,20);
+pointLight.position.set(20, 20, 20);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 
@@ -44,8 +44,24 @@ function addingStars() {
 
 Array(600).fill().forEach(addingStars);
 
-const bgroundTexture = new THREE.TextureLoader().load('redspace.jpg');
+const bgroundTexture = new THREE.TextureLoader().load('./img/redspace.jpg');
 scene.background = bgroundTexture;
+
+const moveCamera = () => {
+  const top = document.body.getBoundingClientRect().top;
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z += 0.05;
+
+  norman.rotation.y += 0.01;
+  norman.rotation.z += 0.01;
+
+  camera.position.z = top * -0.01;
+  camera.position.x = top * -0.0002;
+  camera.position.y = top * -0.0002;
+}
+
+document.body.onscroll = moveCamera
 
 function animate() {
   requestAnimationFrame( animate );
@@ -60,7 +76,7 @@ animate();
 
 // Avatar
 
-const normTexture = new THREE.TextureLoader().load('norman.png');
+const normTexture = new THREE.TextureLoader().load('./img/norman.png');
 const norman = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
   new THREE.MeshBasicMaterial( { map: normTexture } )
@@ -70,8 +86,8 @@ scene.add(norman);
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('cancermoon.jpg');
-const normalTexture = new THREE.TextureLoader().load('moontexture.jpg')
+const moonTexture = new THREE.TextureLoader().load('./img/cancermoon.jpg');
+const normalTexture = new THREE.TextureLoader().load('./img/moontexture.jpg')
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
@@ -81,3 +97,6 @@ const moon = new THREE.Mesh(
 )
 
 scene.add(moon);
+
+moon.position.z = 30;
+moon.position.setX(-10);
