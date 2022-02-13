@@ -44,6 +44,9 @@ function addingStars() {
 
 Array(600).fill().forEach(addingStars);
 
+const bgroundTexture = new THREE.TextureLoader().load('redspace.jpg');
+scene.background = bgroundTexture;
+
 function animate() {
   requestAnimationFrame( animate );
   torus.rotation.x += 0.01;
@@ -54,3 +57,27 @@ function animate() {
 }
 
 animate();
+
+// Avatar
+
+const normTexture = new THREE.TextureLoader().load('norman.png');
+const norman = new THREE.Mesh(
+  new THREE.BoxGeometry(3,3,3),
+  new THREE.MeshBasicMaterial( { map: normTexture } )
+);
+
+scene.add(norman);
+
+// Moon
+
+const moonTexture = new THREE.TextureLoader().load('cancermoon.jpg');
+const normalTexture = new THREE.TextureLoader().load('moontexture.jpg')
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: moonTexture,
+    normalMap: normalTexture
+  })
+)
+
+scene.add(moon);
