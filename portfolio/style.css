@@ -44,8 +44,21 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+p {
   margin-block: 5px;
+  font-size: 1.8em;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+h4,
+h5,
+p {
+  margin-block: 5px;
+  font-size: 1.2em;
 }
 
 header {
@@ -83,6 +96,7 @@ div p {
 
 ul li {
   margin-block: 7px;
+  font-size: 1.2em;
 }
 
 a {
